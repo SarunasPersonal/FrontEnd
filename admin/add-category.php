@@ -18,7 +18,6 @@ include("partials/menu.php");
 <body>
 
     <div class="container mt-5">
-        <div class="wrapper">
             <h1 class="text-center">Add Category</h1>
             <br><br>
             <div class="text-center">

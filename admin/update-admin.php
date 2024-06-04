@@ -1,8 +1,5 @@
 <?php 
 include("partials/menu.php"); 
-?>
-
-<?php
 
 // Check if the connection is properly initialized
 if (!isset($conn)) {
@@ -38,29 +35,25 @@ if (isset($_GET['id'])) {
 }
 ?>
 
-<div class="main-content">
-    <div class="wrapper">
-        <h1>Update Admin</h1>
-        </br></br>
-
-        <form action="" method="POST">
-            <table class="tbl-30">
-                <tr>
-                    <td>Full Name:</td>
-                    <td><input type="text" name="full_name" value="<?php echo htmlspecialchars($full_name); ?>"></td>
-                </tr>
-                <tr>
-                    <td>Username:</td>
-                    <td><input type="text" name="username" value="<?php echo htmlspecialchars($username); ?>"></td>
-                </tr>
-                <tr>
-                    <td colspan="2">
-                        <input type="hidden" name="id" value="<?php echo htmlspecialchars($id); ?>">
-                        <input type="submit" name="submit" value="Update Admin" class="btn-secondary">
-                    </td>
-                </tr>
-            </table>
-        </form>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-4">
+            <h1 class="text-center">Update Admin</h1>
+            <form action="" method="POST">
+                <div class="form-group">
+                    <label for="full_name">Full Name:</label>
+                    <input type="text" name="full_name" id="full_name" value="<?php echo htmlspecialchars($full_name); ?>" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="username">Username:</label>
+                    <input type="text" name="username" id="username" value="<?php echo htmlspecialchars($username); ?>" class="form-control">
+                </div>
+                <div class="form-group text-center">
+                    <input type="hidden" name="id" value="<?php echo htmlspecialchars($id); ?>">
+                    <button type="submit" name="submit" class="btn btn-primary">Update Admin</button>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 

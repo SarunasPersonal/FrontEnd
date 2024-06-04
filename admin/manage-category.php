@@ -1,4 +1,26 @@
-<?php include ('partials/menu.php'); ?>
+<?php 
+include ('partials/menu.php'); 
+?>
+
+<?php
+if (isset($_SESSION['add'])) {
+    if ($_SESSION['add'] === "Category Added Successfully") {
+        echo '<div class="alert alert-success">' . $_SESSION['add'] . '</div>';
+    } else {
+        echo '<div class="alert alert-danger">' . $_SESSION['add'] . '</div>';
+    }
+    unset($_SESSION['add']);
+
+    if (isset($_SESSION['update'])) {
+        echo '<div class="alert alert-success">' . $_SESSION['update'] . '</div>';
+        unset($_SESSION['update']);
+    }
+
+
+    
+}
+?>
+
 <div class="container text-center mx-auto">
     <div class="wrapper">
         <h1>Manage Categories</h1>
@@ -14,7 +36,7 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th scope="col">S.N</th>
+                    <th scope="col">ID</th>
                     <th scope="col">Category Name</th>
                     <th scope="col">Actions</th>
                 </tr>
