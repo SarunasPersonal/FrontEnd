@@ -64,4 +64,3 @@ if (isset($_GET['id'])) {
 
 // Redirect to manage category page
 header("location:" . SITEURL . "/admin/manage-category.php");
-
