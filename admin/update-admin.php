@@ -73,8 +73,7 @@ if (isset($_POST['submit'])) {
     mysqli_stmt_bind_param($stmt, 'ssi', $full_name, $username, $id);
     $res = mysqli_stmt_execute($stmt);
 
-    session_start(); // Ensure the session is started before using $_SESSION
-    if ($res) {
+    session_start(); 
         $_SESSION['update'] = "<div class='success'>Admin Updated Successfully.</div>";
     } else {
         $_SESSION['update'] = "<div class='error'>Failed to Update Admin.</div>";

@@ -1,5 +1,4 @@
 <?php
-// Include the menu file to maintain consistency across pages
 include ('partials/menu.php');
 
 // Check if a session message is set for product deletion or update

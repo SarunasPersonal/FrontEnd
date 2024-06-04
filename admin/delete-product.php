@@ -1,10 +1,8 @@
 <?php
-// Start session if not already started
 if (!isset($_SESSION)) {
     session_start();
 }
 
-// Include constants.php
 include('../config/constants.php');
 
 // Check if id is set in the URL
@@ -18,7 +16,6 @@ if (isset($_GET['id'])) {
     // Prepare the statement
     $stmt = mysqli_prepare($conn, $sql);
 
-    // Bind parameters
     mysqli_stmt_bind_param($stmt, 'i', $id);
 
     // Execute the statement
@@ -41,9 +38,7 @@ if (isset($_GET['id'])) {
     // Close database connection
     mysqli_close($conn);
 } else {
-    // If id is not set in the URL
     $_SESSION["delete"] = "<div class='error'>Invalid request. Product ID is missing.</div>";
     // Redirect to manage products page
     header("location:" . SITEURL . "/admin/manage-product.php");
 }
-?>

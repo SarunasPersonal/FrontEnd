@@ -9,14 +9,24 @@ if(isset($_POST['submit'])) {
     // Hash the password
     $hashed_password = md5($password);
 
+    // SQL to check user credentials
     $sql = "SELECT * FROM tbl_admin WHERE username='$username' AND password='$hashed_password'";
     $res = mysqli_query($conn, $sql);
 
+    // Check if a user with the given credentials exists
     if(mysqli_num_rows($res) == 1) {
         // User exists, set session variables and redirect to admin dashboard
+        $user = mysqli_fetch_assoc($res);
+        $_SESSION['user_id'] = $user['id'];
+        $_SESSION['user_role'] = $user['role']; // Assuming 'role' is a column in your tbl_admin table
         $_SESSION['login'] = "<div class='success'>Login Successful.</div>";
-        $_SESSION['user'] = $username;
-        header('location:'.SITEURL.'admin/');
+        // Check if the user is an admin
+        if ($_SESSION['user_role'] === 'admin') {
+            header('location:'.SITEURL.'admin/dashboard.php');
+        } else {
+            // Redirect regular users to their dashboard
+            header('location:'.SITEURL.'user/dashboard.php');
+        }
         exit();
     } else {
         // User doesn't exist or credentials are incorrect, set error message and redirect back to login page

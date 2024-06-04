@@ -35,6 +35,7 @@ include("login-check.php");
                     <li class="nav-item"><a class="nav-link active" href="manage-category.php">Category</a></li>
                     <li class="nav-item"><a class="nav-link active" href="manage-order.php">Order</a></li>
                     <li class="nav-item"><a class="nav-link active" href="manage-product.php">Products</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="manage-users.php">Manage Users</a></li>
                     <li class="nav-item"><a class="nav-link active" href="logout.php">Logout</a></li>
 
                     <li class="nav-item">

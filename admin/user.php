@@ -52,7 +52,6 @@ if(isset($_POST['submit']))
     // Execute the Query
     $res = mysqli_query($conn, $sql);
 
-    // Count rows to check whether the user exists or not
     $count = mysqli_num_rows($res);
 
     if($count==1)
@@ -61,7 +60,6 @@ if(isset($_POST['submit']))
         $_SESSION['login'] = "<div class='success'>Login Successful.</div>";
         $_SESSION['user'] = $username; // To check whether the user is logged in or not and logout will unset it
 
-        // Redirect to Home Page/Dashboard
         header('location:'.SITEURL.'admin/');
     }
     else

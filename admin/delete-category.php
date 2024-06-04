@@ -7,14 +7,12 @@ if (!isset($_SESSION['user'])) {
     exit();
 }
 
-// Check if the user has the necessary role to access the page
 if ($_SESSION['role'] !== 'admin') {
     // Redirect to a different page or display an error message
     header('Location: unauthorized.php');
     exit();
 }
 
-// The rest of the page code goes here
 ?>
 
 <!-- HTML content for the manage-category page -->
@@ -33,10 +31,8 @@ if (isset($_GET['id'])) {
     // Get the id to delete
     $id = $_GET['id'];
 
-    // Prepare SQL statement to delete category
     $sql = "DELETE FROM tbl_category WHERE id=?";
 
-    // Prepare the statement
     $stmt = mysqli_prepare($conn, $sql);
 
     // Bind parameters
