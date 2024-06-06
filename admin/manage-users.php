@@ -2,6 +2,7 @@
 include ('partials/menu.php'); 
 ?>
 
+
 <!-- HTML header and navigation menu -->
 
 <div class="container mt-5">

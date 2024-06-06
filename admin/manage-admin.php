@@ -1,4 +1,5 @@
 <?php include('partials/menu.php'); ?>
+
 <!-- Main Content Section Starts -->
 <div class="container text-center mx-auto" style="width: 500px;">
     <h1>Manage Admin</h1>
@@ -71,16 +72,16 @@
                                 $full_name = $rows['full_name'];
                                 $username = $rows['username'];
                     ?>
-                    <tr>
-                        <th scope="row"><?php echo $sn++; ?></th>
-                        <td><?php echo $full_name; ?></td>
-                        <td><?php echo $username; ?></td>
-                        <td>
-                            <a href="<?php echo SITEURL; ?>admin/update-admin.php?id=<?php echo $id; ?>" class="btn btn-secondary">Update Admin</a>
-                            <a href="<?php echo SITEURL; ?>admin/delete-admin.php?id=<?php echo $id; ?>" class="btn btn-danger">Delete Admin</a>
-                            <a href="<?php echo SITEURL; ?>admin/update-password.php?id=<?php echo $id; ?>" class="btn btn-success">Change Password</a>
-                        </td>
-                    </tr>
+                                <tr>
+                                    <th scope="row"><?php echo $sn++; ?></th>
+                                    <td><?php echo $full_name; ?></td>
+                                    <td><?php echo $username; ?></td>
+                                    <td>
+                                        <a href="<?php echo SITEURL; ?>admin/update-admin.php?id=<?php echo $id; ?>" class="btn btn-secondary">Update Admin</a>
+                                        <a href="<?php echo SITEURL; ?>admin/delete-admin.php?id=<?php echo $id; ?>" class="btn btn-danger">Delete Admin</a>
+                                        <a href="<?php echo SITEURL; ?>admin/update-password.php?id=<?php echo $id; ?>" class="btn btn-success">Change Password</a>
+                                    </td>
+                                </tr>
                     <?php
                             }
                         } else {

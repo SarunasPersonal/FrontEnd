@@ -1,7 +1,4 @@
-<?php 
-include('../config/constants.php'); 
-
-// Check if the form is submitted
+<?php include('partials/menu.php'); 
 if(isset($_POST['submit'])) {
     // Retrieve and sanitize input data
     $username = mysqli_real_escape_string($conn, $_POST['username']);

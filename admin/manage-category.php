@@ -2,6 +2,7 @@
 include('partials/menu.php');
 ?>
 
+
 <div class="container text-center mx-auto" style="width: 500px;">
     <?php
     if (isset($_SESSION['add'])) {

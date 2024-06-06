@@ -1,5 +1,7 @@
 <?php
-include ('partials/menu.php');
+include ('partials/menu.php');?>
+
+<?php
 
 // Check if a session message is set for product deletion or update
 if (isset($_SESSION['delete'])) {
