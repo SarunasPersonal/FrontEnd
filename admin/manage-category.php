@@ -1,26 +1,44 @@
-<?php 
-include ('partials/menu.php'); 
-?>
-
 <?php
-if (isset($_SESSION['add'])) {
-    if ($_SESSION['add'] === "Category Added Successfully") {
-        echo '<div class="alert alert-success">' . $_SESSION['add'] . '</div>';
-    } else {
-        echo '<div class="alert alert-danger">' . $_SESSION['add'] . '</div>';
-    }
-    unset($_SESSION['add']);
-
-    if (isset($_SESSION['update'])) {
-        echo '<div class="alert alert-success">' . $_SESSION['update'] . '</div>';
-        unset($_SESSION['update']);
-    }
-
-
-    
-}
+include('partials/menu.php');
 ?>
 
+<div class="container text-center mx-auto" style="width: 500px;">
+    <?php
+    if (isset($_SESSION['add'])) {
+        if ($_SESSION['add'] === "Category Added Successfully") {
+            echo '<div class="alert alert-success">' . $_SESSION['add'] . '</div>';
+        } else {
+            echo '<div class="alert alert-danger">' . $_SESSION['add'] . '</div>';
+        }
+        unset($_SESSION['add']);
+
+        if (isset($_SESSION['update'])) {
+            echo '<div class="alert alert-success">' . $_SESSION['update'] . '</div>';
+            unset($_SESSION['update']);
+        }
+    }
+    if (isset($_SESSION['delete'])) {
+        if ($_SESSION['delete'] === "Product Deleted Successfully") {
+            echo '<div class="alert alert-success">' . $_SESSION['delete'] . '</div>';
+        } else {
+            echo '<div class="alert alert-danger">' . $_SESSION['delete'] . '</div>';
+        }
+        unset($_SESSION['delete']);
+
+        if (isset($_SESSION['update'])) {
+            echo '<div class="alert alert-success">' . $_SESSION['update'] . '</div>';
+            unset($_SESSION['update']);
+        }
+    }
+
+
+
+
+
+
+
+    ?>
+</div>
 <div class="container text-center mx-auto">
     <div class="wrapper">
         <h1>Manage Categories</h1>
@@ -31,7 +49,7 @@ if (isset($_SESSION['add'])) {
                 <a type="button" class="btn btn-primary btn-lg" href="add-category.php" class="btn-primary">Add Category</a>
             </div>
         </div>
-        <br/><br/>
+        <br /><br />
 
         <table class="table table-striped">
             <thead>
@@ -52,14 +70,14 @@ if (isset($_SESSION['add'])) {
                         $id = $row['id'];
                         $title = $row['title'];
                 ?>
-                <tr>
-                    <td><?php echo $sn++; ?></td>
-                    <td><?php echo $title; ?></td>
-                    <td>
-                        <a href="<?php echo SITEURL; ?>admin/update-category.php?id=<?php echo $id; ?>" class="btn btn-secondary">Update Category</a>
-                        <a href="<?php echo SITEURL; ?>admin/delete-category.php?id=<?php echo $id; ?>" class="btn btn-danger">Delete Category</a>
-                    </td>
-                </tr>
+                        <tr>
+                            <td><?php echo $sn++; ?></td>
+                            <td><?php echo $title; ?></td>
+                            <td>
+                                <a href="<?php echo SITEURL; ?>admin/update-category.php?id=<?php echo $id; ?>" class="btn btn-secondary">Update Category</a>
+                                <a href="<?php echo SITEURL; ?>admin/delete-category.php?id=<?php echo $id; ?>" class="btn btn-danger">Delete Category</a>
+                            </td>
+                        </tr>
                 <?php
                     }
                 } else {
@@ -71,4 +89,4 @@ if (isset($_SESSION['add'])) {
         </table>
     </div>
 </div>
-<?php include ('partials/footer.php'); ?>
+<?php include('partials/footer.php'); ?>

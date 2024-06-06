@@ -13,8 +13,10 @@ include ('partials/menu.php');
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Username</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Surname</th>
                     <th scope="col">Email</th>
-                    <th scope="col">Role</th>
+                    <th scope="col">Address</th>
                     <th scope="col">Registration Date</th>
                     <th scope="col">Action</th>
                 </tr>
@@ -31,14 +33,16 @@ include ('partials/menu.php');
                     <tr>
                         <td><?php echo $sn++; ?></td>
                         <td><?php echo $row['username']; ?></td>
+                        <td><?php echo $row['name']; ?></td>
+                        <td><?php echo $row['surname']; ?></td>
                         <td><?php echo $row['email']; ?></td>
-                        <td><?php echo $row['role']; ?></td>
+                        <td><?php echo $row['shipping_address']; ?></td>
                         <td><?php echo $row['registration_date']; ?></td>
                         <td>
                             <!-- Add action buttons for managing users -->
                             <!-- Example: Edit and Delete buttons -->
-                            <a href="edit-user.php?id=<?php echo $row['id']; ?>" class="btn btn-primary btn-sm">Edit</a>
-                            <a href="delete-user.php?id=<?php echo $row['id']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this user?')">Delete</a>
+                            <a href="update-user.php?id=<?php echo $row['user_id']; ?>" class="btn btn-primary btn-sm">Edit</a>
+                            <a href="delete-user.php?id=<?php echo $row['user_id']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this user?')">Delete</a>
                         </td>
                     </tr>
                 <?php

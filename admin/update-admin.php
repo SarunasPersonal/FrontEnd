@@ -1,5 +1,5 @@
 <?php 
-include("partials/menu.php"); 
+include "partials/menu.php"; 
 
 // Check if the connection is properly initialized
 if (!isset($conn)) {
@@ -33,6 +33,31 @@ if (isset($_GET['id'])) {
         }
     }
 }
+
+if (isset($_POST['submit'])) {
+    //create sql query to update admin
+    $id = $_POST['id'];
+    $full_name = $_POST['full_name'];
+    $username = $_POST['username'];
+
+    $sql = "UPDATE tbl_admin SET
+    full_name = ?,
+    username = ?
+    WHERE id = ?";
+    
+    $stmt = mysqli_prepare($conn, $sql);
+    mysqli_stmt_bind_param($stmt, 'ssi', $full_name, $username, $id);
+    $res = mysqli_stmt_execute($stmt);
+
+    session_start(); 
+    if ($res) {
+        $_SESSION['update'] = "<div class='success'>Admin Updated Successfully.</div>";
+    } else {
+        $_SESSION['update'] = "<div class='error'>Failed to Update Admin.</div>";
+    }
+    header('location:' . SITEURL . 'admin/manage-admin.php');
+    exit;
+}
 ?>
 
 <div class="container mt-5">
@@ -57,30 +82,4 @@ if (isset($_GET['id'])) {
     </div>
 </div>
 
-<?php
-if (isset($_POST['submit'])) {
-    //create sql query to update admin
-    $id = $_POST['id'];
-    $full_name = $_POST['full_name'];
-    $username = $_POST['username'];
-
-    $sql = "UPDATE tbl_admin SET
-    full_name = ?,
-    username = ?
-    WHERE id = ?";
-    
-    $stmt = mysqli_prepare($conn, $sql);
-    mysqli_stmt_bind_param($stmt, 'ssi', $full_name, $username, $id);
-    $res = mysqli_stmt_execute($stmt);
-
-    session_start(); 
-        $_SESSION['update'] = "<div class='success'>Admin Updated Successfully.</div>";
-    } else {
-        $_SESSION['update'] = "<div class='error'>Failed to Update Admin.</div>";
-    }
-    header('location:' . SITEURL . 'admin/manage-admin.php');
-    exit;
-}
-?>
-
-<?php include("partials/footer.php"); ?>
+<?php include "partials/footer.php"; ?>

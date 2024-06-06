@@ -6,7 +6,7 @@ if (isset($_GET['id'])) {
     $user_id = $_GET['id'];
 
     // SQL query to delete the user from the database
-    $sql = "DELETE FROM tbl_users WHERE id = $user_id";
+    $sql = "DELETE FROM tbl_users WHERE user_id = $user_id";
     $res = mysqli_query($conn, $sql);
 
     if ($res) {

@@ -1,30 +1,14 @@
-<?php
-// Check if the user is logged in
-session_start();
-if (!isset($_SESSION['user'])) {
-    // Redirect to the login page if the user is not logged in
-    header('Location: login.php');
-    exit();
-}
 
-if ($_SESSION['role'] !== 'admin') {
-    // Redirect to a different page or display an error message
-    header('Location: unauthorized.php');
-    exit();
-}
-
-?>
-
-<!-- HTML content for the manage-category page -->
 
 <?php
+// Include constants.php
+include('../config/constants.php');
 // Start session if not already started
 if (!isset($_SESSION)) {
     session_start();
 }
 
-// Include constants.php
-include('../config/constants.php');
+
 
 // Check if id is set in the URL
 if (isset($_GET['id'])) {
@@ -45,13 +29,12 @@ if (isset($_GET['id'])) {
     if ($res) {
         // Create session variable to display success message
         $_SESSION['delete'] = "<div class='success'>Category Deleted Successfully.</div>";
+        header("location:" . SITEURL . "/admin/manage-category.php");
     } else {
         // Create session variable to display error message
         $_SESSION["delete"] = "<div class='error'>Failed to Delete Category.</div>";
+        header("location:" . SITEURL . "/admin/manage-category.php");
     }
-    // Redirect to manage category page
-    header("location:" . SITEURL . "/admin/manage-category.php");
-
     // Close the prepared statement
     mysqli_stmt_close($stmt);
 
@@ -60,6 +43,7 @@ if (isset($_GET['id'])) {
 } else {
     // If id is not set in the URL
     $_SESSION["delete"] = "<div class='error'>Invalid request. Category ID is missing.</div>";
+    header("location:" . SITEURL . "/admin/manage-category.php");
 }
 
 // Redirect to manage category page

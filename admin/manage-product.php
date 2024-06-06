@@ -43,7 +43,7 @@ if (isset($_SESSION['delete'])) {
             if (mysqli_num_rows($res) > 0) {
                 $sn = 1;
                 while ($row = mysqli_fetch_assoc($res)) {
-                    $id = $row['id'];
+                    $product_id = $row['product_id'];
                     $title = $row['title'];
                     $description = $row['description'];
                     $price = $row['price'];
@@ -58,8 +58,8 @@ if (isset($_SESSION['delete'])) {
                         <td><?php echo $quantity; ?></td>
                         <td><?php echo $category; ?></td>
                         <td>
-                            <a href="<?php echo SITEURL; ?>admin/update-product.php?id=<?php echo $id; ?>" class="btn btn-secondary">Update</a>
-                            <a href="<?php echo SITEURL; ?>admin/delete-product.php?id=<?php echo $id; ?>" class="btn btn-danger">Delete</a>
+                            <a href="<?php echo SITEURL; ?>admin/update-product.php?id=<?php echo $product_id; ?>" class="btn btn-secondary">Update</a>
+                            <a href="<?php echo SITEURL; ?>admin/delete-product.php?id=<?php echo $product_id; ?>" class="btn btn-danger">Delete</a>
                         </td>
                     </tr>
             <?php
